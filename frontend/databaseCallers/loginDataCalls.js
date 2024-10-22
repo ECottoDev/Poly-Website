@@ -21,16 +21,13 @@ export async function systemLogin(username, password, success = () => { }, fail 
             body: JSON.stringify({ username, password })
         });
         if (!response.ok) {
-            fail();
-            throw new Error(`Failed to login. HTTP status: ${response.status}`);
+            return fail();
         }
-        console.log('login start');
         const data = await response.json();
         success();
         return data;
     } catch (error) {
         console.error('Error logging in:', error);
-        fail();
         throw error;
     }
 }

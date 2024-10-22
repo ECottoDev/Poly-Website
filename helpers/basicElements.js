@@ -100,10 +100,22 @@ export function detachChildren(element) {
  */
 export function addAttributes(node, attributes) {
     for (const key in attributes) {
-        node[key] = attributes[key];    // Set the attribute on the DOM element
+        if (Object.prototype.hasOwnProperty.call(attributes, key)) {
+            if (key.startsWith('data-')) {
+                // Set custom data-* attributes using setAttribute
+                node.setAttribute(key, attributes[key]);
+            } else if (key in node) {
+                // For standard DOM properties (e.g., id, className)
+                node[key] = attributes[key];
+            } else {
+                // Set other attributes (e.g., aria-* attributes)
+                node.setAttribute(key, attributes[key]);
+            }
+        }
     }
     return node;
 }
+
 
 /**
  * Delays the firing of an event listener by a specified time frame. Especially useful for keyup or keydown event listeners.
@@ -380,15 +392,33 @@ export function createInputBar({ type = 'text', placeholder = false, value = '',
         ...id ? { id } : {},
     });
 }
+
+export function createFileInputBar({ type = 'file', accept = '', multiple = false, value = '', disabled = false, id = false, directory = false
+}) {
+    return addAttributes(addClasses(elementFromHTMLString(`<input class="input" type="${type}">`), [
+        disabled && 'disabled',
+        type === 'file' && 'input-file'
+    ]), {
+        type,
+        disabled,
+        value,
+        ...(accept ? { accept } : {}),  // Defines accepted file types
+        ...(multiple ? { multiple } : {}),  // Allows multiple file uploads
+        ...(id ? { id } : {}),
+        ...(directory ? { webkitdirectory: true } : {}),  // Directory input for webkit browsers
+    });
+}
+
+
 /**
  * Create a text area
  * @param {string} value 
- * @param {string} placeHolder 
+ * @param {string} placeholder 
  * @param {Boolean} disableResize 
  * @returns textarea element
  */
-export function createTextArea(value, { placeHolder = '', disableResize = true } = {}) {
-    return addClasses(elementFromHTMLString(`<textarea placeholder=${placeHolder}>${value}</textarea>`), 'textArea', disableResize && 'textArea-disableResize');
+export function createTextArea(value, { placeholder = '', disableResize = true } = {}) {
+    return addClasses(elementFromHTMLString(`<textarea placeholder=${placeholder}>${value}</textarea>`), 'textArea', disableResize && 'textArea-disableResize');
 }
 /**
  * Gets anchor tag
@@ -552,15 +582,6 @@ export function createFadingScrollArea(fadePosition = 'double') {
     return fadingScrollArea;
 }
 
-/**
- * 
- * @returns unique string value
- */
-export function uuIdv4() {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    );
-}
 ///// Navigation /////
 /**
  * 
@@ -819,3 +840,30 @@ export function updateUsernameCookieExpiration(user) {
     const expires = "expires=" + date.toUTCString();
     document.cookie = `username= ${user}; ` + expires + "; path=/";
 }
+
+
+export function getSearchInput(callback = () => { }, placeholder, { ms = 1000 } = {}) {
+    const input = addEvent(addClasses(createInputBar({ type: 'search', placeholder }), 'getSearchInput__input'), () => { input.classList[input.value ? 'add' : 'remove']('getSearchInput__input-cancel'); }, 'input');
+    return addEvent(input, delayedListener(event => { callback(event.target.value); }, ms), 'input');
+}
+
+export function newLineAtEveryCharacter(str, char) {
+    // Split the string at every occurrence of the character
+    const parts = str.split(char);
+
+    // Join the parts back together with the character followed by a newline
+    const result = parts.join('\n');
+
+    return result;
+}
+
+export function stopPropagationOnNode(node) {
+    if (!node) {
+        console.error('Node is not defined');
+        return;
+    }
+    addEvent(node, (event) => {
+        event.stopPropagation();
+    });
+}
+

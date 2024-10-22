@@ -7,52 +7,24 @@
 * @version 2024-February-04 initial version
 */
 .index_view {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
-    width: 100vw;
-    padding: 2rem;
-}
-
-.index_container {
-    grid-area: 2/1/2/2;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: calc(100% - 15rem);
+  padding: 2rem 2rem 2rem 2rem;
+  margin-top: 1rem;
+  background: url("/frontEnd/assets/images/polytechnicUniversity.jpg") no-repeat;
+  background-size: cover;
 }
 
 .index_navBarContainer {
-    grid-area: 1/1/1/1;
-    padding: 0.5rem;
-    width: 100%;
-    display: grid;
-    grid-template-columns: max-content 1fr;
+  padding: 1rem;
 }
 
-
-.index_lucifer {
-    grid-area: 1/1/1/1;
-    height: 15rem;
-    width: 15rem;
-    margin-right: 2rem;
-    cursor: pointer;
-    fill: transparent;
-    stroke: var(--dark_red);
-    stroke-width: 1rem;
+.index_container {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
 }
 
-.index_lucifer>* {
-    height: 15rem;
-    width: 15rem;
-}
-
-.index_navBar {
-    grid-area: 1/2/1/2;
-}
-.index_heading{
-    font-size: 3.5rem;
-    grid-area:2/1/2/3
-}
-.index_heading2{
-    font-size: 3.5rem;
-    grid-area:3/1/3/3
+.index_newArray {
+  background-color: aquamarine;
 }

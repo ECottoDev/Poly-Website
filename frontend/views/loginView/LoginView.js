@@ -15,24 +15,22 @@ import { systemLogin } from "../../databaseCallers/loginDataCalls.js";
 export class LoginView {
     constructor(parentProps) {
         this.parentProps = parentProps;
-        this.view = addClasses(createElementContainer(), 'loginView_view');
+        this.view = addClasses(createPillBox(), 'loginView_view');
         this.fetch();
-    }
+    } g
     async fetch() {
         this.setView();
     }
     setView() {
         appendChildren(this.view, [
             addClasses(createHeadingText('Poly login', { bold: true }), 'loginView_heading'),
-            this.user = createInputBar({ placeholder: 'User' }),
-            this.password = createInputBar({ type: 'password', placeholder: 'Password' }),
-            // addEvent(addClasses(createButton('get users'), 'loginView_addButton','loginView_button'), ()=>{this.getUsers()}),
-            addEvent(addClasses(createButton('test user'), 'loginView_addButton', 'loginView_button'), () => { this.testUsers() }),
-            addEvent(addClasses(createButton('Register'), 'loginView_addButton', 'loginView_button'), () => { this.parentProps.setNavState(routes.REGISTER_VIEW) }),
+            this.user = addClasses(createInputBar({ placeholder: 'User' }), 'loginView_userInput'),
+            this.password = addEvent(addClasses(createInputBar({ type: 'password', placeholder: 'Password' }), 'loginView_passwordInput'), async () => { if (event.key === 'Enter') { this.login() } }, 'keydown'),
+            addEvent(addClasses(createButton('Ingresar'), 'loginView_loginButton'), () => this.login()),
 
         ])
     }
-    async testUsers() {
+    async login() {
         await systemLogin(this.user.value, this.password.value,
             () => {
                 const close = this.parentProps.displayBox(appendChildren(createPillBox(), [
@@ -41,7 +39,7 @@ export class LoginView {
                     delayExecution(() => {
                         this.parentProps.setUser(this.user.value);
                         close();
-                        delayedListener(this.parentProps.setNavState(routes.RESUME_VIEW))
+                        delayExecution(this.parentProps.setNavState(routes.PROFESSOR_MANAGEMENT), 1000);
                     }, 1000)])
                 )
             },

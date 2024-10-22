@@ -1,0 +1,49 @@
+.NavigationTabs_view {
+  display: flex;
+  padding: 5px;
+  /* Slight padding around the container */
+  border-radius: 5px;
+  /* Rounded corners for a smoother appearance */
+}
+
+/* Individual tab styling */
+.NavigationTabsView_tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  /* Increased padding for a more button-like feel */
+  border: 1px solid rgb(204, 204, 204);
+  /* Border around each tab */
+  margin-right: 5px;
+  /* Space between the tabs */
+  background-color: rgb(229, 229, 229);
+  /* Light background for inactive tabs */
+  border-radius: 3px 3px 0 0;
+  /* Rounded top corners only */
+  font-family: Arial, sans-serif;
+  /* Clear, readable font */
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  /* Dark text color */
+  transition: background-color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Hover effect for tabs */
+.NavigationTabsView_tab:hover {
+  background-color: rgb(213, 213, 213);
+  /* Slightly darker background on hover */
+}
+
+/* Active tab styling */
+.active-tab {
+  background-color: var(--pupr_yellow);
+  /* White background for the active tab */
+  border-bottom: 3px solid rgb(33, 47, 178);
+  /* Highlighted bottom border for active tab */
+  color: rgb(0, 0, 0);
+  /* Darker text color for active tab */
+}
+
+/* Remove the margin on the last tab */
+.NavigationTabsView_tab:last-child {
+  margin-right: 0;
+}

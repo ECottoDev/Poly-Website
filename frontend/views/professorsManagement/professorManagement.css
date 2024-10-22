@@ -1,0 +1,64 @@
+/**
+* professorManagement.js
+*
+* @author Edwin Cotto <cottosoftwaredevelopment@gmail.com>>
+* @copyright Edwin Cotto, All rights reserved.
+*
+* @version 2024-April-22 initial version
+*/
+.professorManagement_view {
+  background-color: rgba(255, 255, 255, 0.658);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.professorManagement_scrollAreaHeader {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchBar_background {
+  background-color: white;
+  height: 3.5rem;
+}
+
+.professorManagement_title {
+  grid-area: 1/1/1/1;
+  color: rgb(33, 47, 178);
+  font-size: 3.5rem;
+  margin-left: 4rem;
+}
+
+.professorManagement_buttonAndSearch {
+  display: grid;
+  grid-area: 1/2/1/3;
+  column-gap: 2rem;
+}
+
+.professorManagement_addProfessorButton {
+  grid-area: 1/1/1/1;
+  font-size: 1.3rem;
+}
+
+.professorManagement_loginButton {
+  grid-area: 1/2/1/2;
+  font-size: 1.3rem;
+
+  /* margin-right: 4rem; */
+}
+
+.professorManagement_searchBar {
+  grid-area: 1/3/1/3;
+  background-color: rgba(255, 255, 255, 0);
+  margin-right: 4rem;
+}
+
+.professorManagement_scrollArea {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}

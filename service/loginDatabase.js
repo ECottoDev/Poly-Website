@@ -67,8 +67,8 @@ class LoginDatabase {
         }
     }
 
-    // async hashPassword(password) {
-    //     return await bcrypt.hash(password, 10);
+    // async hashPassword() {
+    //     return await bcrypt.hash('Pass', 10);
     // }
 
     async isValidUser(username, password) {

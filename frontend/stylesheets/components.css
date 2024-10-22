@@ -7,6 +7,12 @@
 * @version 2024-February-04 initial version
 */
 
-@import '../components/displayBox/displayBox.css';
-@import '../components/checkbox/checkbox.css';
-@import '../components/tiles/educationTiles/educationTiles.css';
+@import "../components/displayBox/displayBox.css";
+@import "../components/checkbox/checkbox.css";
+@import "../components/tiles/professorTile/professorTile.css";
+@import "../components/tiles/professorEditTile/professorEditTile.css";
+@import "../components/editableBookArray/editableBookArray.css";
+@import "../components/tiles/bookTiles/bookTiles.css";
+@import "../components/tiles/articlesTiles/articleTiles.css";
+@import "../components/tiles/awardTiles/awardTiles.css";
+@import "../components/tiles/certificationTiles/certificationTiles.css";

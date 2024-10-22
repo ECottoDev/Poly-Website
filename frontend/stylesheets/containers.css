@@ -6,7 +6,8 @@
 *
 * @version 2024-February-04 initial version
 */
-@import '../containers/navigationBar/navigationBar.css';
-@import '../containers/educationHistory/educationHistory.css';
-@import '../containers/addEducation/addEducation.css';
-@import '../containers/updateEducation/updateEducation.css';
+@import "../containers/navigationBar/navigationBar.css";
+@import "../containers/professorBiography/professorBiography.css";
+@import "../containers/professorBiographyEdit/professorBiographyEdit.css";
+@import "../containers/navigationTabs/navigationTabs.css";
+@import "../containers/addProfessor/addProfessor.css";

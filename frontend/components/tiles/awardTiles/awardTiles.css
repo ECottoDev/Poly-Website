@@ -1,0 +1,26 @@
+.awardTile_view {
+    display: grid;
+    column-gap: 0.5rem;
+    justify-content: flex-start;
+    margin: 1rem 1rem 1rem 0;
+}
+
+.awardTile_index {
+    grid-area: 1/1/1/1;
+}
+
+.awardTile_info {
+    grid-area: 1/2/1/3;
+    padding-left: 0.5rem;
+    border-left: 1px solid rgb(0, 0, 0);
+}
+
+.awardTile_name {}
+
+.awardTile_year {
+    font-size: 1.5rem;
+}
+
+.awardTile_institution {
+    font-size: 1.5rem;
+}

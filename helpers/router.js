@@ -9,6 +9,7 @@
 */
 export const routes = {
     HOME_VIEW: '#/home',
+    LOGIN: '#/login',
+    PROFESSOR_MANAGEMENT: '#/professorManagement',
     REGISTER_VIEW: '#/register',
-    RESUME_VIEW: '#/resume',
 }

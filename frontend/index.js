@@ -1,12 +1,14 @@
 
-import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createHeadingText, createImg, createSVG, createSVGButton, createScrollArea, detachChildren, getURLParam, getUsernameCookie, navigate, parseRequestURL, setUsernameCookie, toPhoneFormat } from "../helpers/basicElements.js";
+import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createHeadingText, createImg, createInputBar, createSVG, createSVGButton, createScrollArea, detachChildren, getURLParam, getUsernameCookie, navigate, parseRequestURL, setUsernameCookie, toPhoneFormat } from "../helpers/basicElements.js";
 import { routes } from "../helpers/router.js";
 import { DisplayBox } from "./components/displayBox/DisplayBox.js";
+import { EditableBookArray } from "./components/editableBookArray/EditableBookArray.js";
 import { NavigationBar } from "./containers/navigationBar/NavigationBar.js";
 import { verifySession } from "./databaseCallers/loginDataCalls.js";
 import { LoginView } from "./views/loginView/LoginView.js";
-import { RegisterView } from "./views/registerView/RegisterView.js";
-import { ResumeView } from "./views/resumeView/ResumeView.js";
+import { ProfessorRoster } from "./views/ProfessorRoster/ProfessorRoster.js";
+import { ProfessorManagement } from "./views/professorsManagement/ProfessorManagement.js";
+
 
 
 window.onload = async () => { appendChildren(document.getElementById('root'), [new Index().view]); }
@@ -18,6 +20,8 @@ export class Index {
         this.displayBox = new DisplayBox(root);
         this.setNavObj();
         this.setAppProps();
+        // this.newArray = new EditableArray(this.appProps, ['item1', 'item2', 'item3']);
+
         this.container = addClasses(createScrollArea(), 'index_container');
         this.view = addClasses(createElementContainer(), 'index_view');
         this.setView();
@@ -36,9 +40,12 @@ export class Index {
     async setView() {
         appendChildren(detachChildren(this.view), [
             appendChildren(addClasses(createElementContainer(), 'index_navBarContainer'), [
-                addEvent(addClasses(createSVGButton('frontend/assets/icons/lucifer.svg'), 'index_lucifer'), () => { this.setNavState(routes.HOME_VIEW); }),
                 this.navBar = addClasses(new NavigationBar(this.appProps).view, 'index_navBar'),
             ]),
+            // addClasses(this.newArray.view, 'index_newArray'),
+            // addEvent(createButton('add'), () => this.newArray.addInput()),
+            // addEvent(createButton('remove'), () => this.newArray.removeLastEmptyInput()),
+            // addEvent(createButton('array'), () => this.newArray.getUpdatedArray()),
             this.container,
         ]);
         this.setNavState(this.navState, this.setParams());
@@ -48,9 +55,9 @@ export class Index {
      */
     setNavObj() {
         this.navigation = {
-            [routes.HOME_VIEW]: () => new LoginView(this.appProps).view,
-            [routes.RESUME_VIEW]: () => new ResumeView(this.appProps).view,
-            [routes.REGISTER_VIEW]: () => new RegisterView(this.appProps).view,
+            [routes.HOME_VIEW]: () => new ProfessorRoster(this.appProps).view,
+            [routes.LOGIN]: () => new LoginView(this.appProps).view,
+            [routes.PROFESSOR_MANAGEMENT]: () => new ProfessorManagement(this.appProps).view,
         }
     }
     /**
@@ -61,26 +68,25 @@ export class Index {
     async setNavState(hash = '', params = false) {
         hash && navigate(hash, params);
         this.navState = parseRequestURL().split('?')[0];
-
         const verify = await verifySession(this.appProps.username());
-        if (!verify.success) {
-            // Check if REGISTER_V'IEW is defined and navigate there
-            if (this.navState === '#/register') {
-                navigate(this.navState);
-            } else {
-                // Otherwise, navigate to HOME_VIEW
-                this.navState = routes.HOME_VIEW;
-            }
-        } else if (this.navState === routes.HOME_VIEW || this.navState === '' || this.navState === '#/' || this.navState === '/') {
-            // If on HOME_VIEW or an empty/invalid route, navigate to RESUME_VIEW
-            this.navState = routes.RESUME_VIEW;
-            navigate(this.navState);
-        } else if (this.navState === routes.RESUME_VIEW || this.navigation[this.navState]) {
-            // If on RESUME_VIEW or a valid route, continue navigation
-            navigate(this.navState);
+
+        if (!verify.success && this.navState !== routes.LOGIN) {
+            this.navState = routes.HOME_VIEW;
+        } else if (this.navState === '' || this.navState === '#/' || this.navState === '/') {
+            this.navState = routes.HOME_VIEW;
+        } else if (this.navState !== routes.LOGIN && !this.navigation[this.navState]) {
+            this.navState = routes.HOME_VIEW; // fallback to HOME_VIEW if route is invalid
+        } else if (!verify.success && this.navState === routes.LOGIN) {
+            this.navState = routes.LOGIN;
         }
+        else if (verify.success && this.navigation[this.navState]) {
+            navigate(this.navState); // Single navigation call
+        }
+        navigate(this.navState); // Single navigation call
         const navView = this.navigation[this.navState] ? this.navigation[this.navState]() : false;
-        (navView && this.navigation[this.navState]) && appendChildren(detachChildren(this.container), navView);
+        if (navView) {
+            appendChildren(detachChildren(this.container), navView);
+        }
     }
     /**
      * helps to get the params to the url

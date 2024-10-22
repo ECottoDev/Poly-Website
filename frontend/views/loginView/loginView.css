@@ -1,12 +1,19 @@
 .loginView_view {
-    height: 100%;
-    width: 100%;
+  height: fit-content;
+  width: fit-content;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.loginView_userInput,
+.loginView_passwordInput {
+  margin-bottom: 0.5rem;
+  background-color: rgb(255, 255, 255);
 }
 
 .loginView_background {
-    width: 100%;
+  width: 100%;
 }
 
 .loginView_backgroundImage {
-    width: 100%;
+  width: 100%;
 }
