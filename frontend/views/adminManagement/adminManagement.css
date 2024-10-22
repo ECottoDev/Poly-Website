@@ -1,0 +1,8 @@
+.adminManagement_buttons {
+  display: grid;
+  row-gap: 1rem;
+  padding: 1rem;
+}
+.adminManagement_errorDialogBox {
+  font-size: 2rem;
+}

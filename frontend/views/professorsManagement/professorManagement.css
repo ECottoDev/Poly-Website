@@ -39,20 +39,24 @@
   column-gap: 2rem;
 }
 
-.professorManagement_addProfessorButton {
+.professorManagement_adminButton {
   grid-area: 1/1/1/1;
   font-size: 1.3rem;
 }
-
-.professorManagement_loginButton {
+.professorManagement_addProfessorButton {
   grid-area: 1/2/1/2;
+  font-size: 1.3rem;
+}
+
+.professorManagement_exitButton {
+  grid-area: 1/3/1/3;
   font-size: 1.3rem;
 
   /* margin-right: 4rem; */
 }
 
 .professorManagement_searchBar {
-  grid-area: 1/3/1/3;
+  grid-area: 1/4/1/4;
   background-color: rgba(255, 255, 255, 0);
   margin-right: 4rem;
 }

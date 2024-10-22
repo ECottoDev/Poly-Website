@@ -49,8 +49,7 @@ export async function verifySession(username) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error verifying session:', error);
-        throw error;
+        return { success: false };
     }
 }
 

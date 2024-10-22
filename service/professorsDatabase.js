@@ -13,6 +13,7 @@
 */
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
 dotenv.config();
 
 class ProfessorsDatabase {
@@ -40,6 +41,101 @@ class ProfessorsDatabase {
             });
         });
     }
+    async getAdminData(username) {
+        try {
+            if (this.connection.state === 'disconnected') this.connection.connect((err) => {
+                if (err) throw err;
+                console.log('Connected!');
+            })
+            const response = await new Promise((resolve, reject) => {
+                const query = "SELECT * FROM users where username = ?;";
+                this.connection.query(query, [username], (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                })
+            })
+            return response;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async insertAdminData(username, password) {
+        try {
+            if (this.connection.state === 'disconnected') {
+                this.connection.connect((err) => {
+                    if (err) throw err;
+                    console.log('Connected!');
+                });
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const query = "INSERT INTO users (username, password) VALUES (?, ?)";
+            const response = await new Promise((resolve, reject) => {
+                this.connection.query(query, [username, hashedPassword], (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                });
+            });
+            return response.affectedRows === 1 ? true : false;
+
+        } catch (err) {
+            console.log(err);
+            return false;
+        }
+    }
+
+    async updateAdminData(username, password) {
+        try {
+            if (this.connection.state === 'disconnected') {
+                this.connection.connect((err) => {
+                    if (err) throw err;
+                    console.log('Connected!');
+                });
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const query = "UPDATE users SET password = ? WHERE username = ?";
+            const response = await new Promise((resolve, reject) => {
+                this.connection.query(query, [hashedPassword, username], (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                });
+            });
+            return response.affectedRows === 1 ? true : false;
+
+        }
+        catch (err) {
+            console.log(err);
+            return false;
+        }
+    }
+
+    async deleteAdminData(username) {
+        try {
+            if (this.connection.state === 'disconnected') {
+                this.connection.connect((err) => {
+                    if (err) throw err;
+                    console.log('Connected!');
+                });
+            }
+            const query = "DELETE FROM users WHERE username = ?";
+            const response = await new Promise((resolve, reject) => {
+                this.connection.query(query, [username], (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                });
+            });
+            return response.affectedRows === 1 ? true : false;
+
+        } catch (err) {
+            console.log(err);
+            return false;
+        }
+    }
+
+
     async getProfessorData() {
         try {
             if (this.connection.state === 'disconnected') this.connection.connect((err) => {

@@ -17,6 +17,94 @@ const host = 'https://luxprogramming.com'
 // const host = 'http://localhost'
 const domain = `${host}:${port}`
 
+export async function getAdminData(username) {
+    try {
+        const response = await fetch(`${domain}/professors/getAdmin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username })
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
+export async function insertAdminData(username, password, success = () => { }, fail = () => { }) {
+    try {
+        const response = await fetch(`${domain}/professors/insertAdmin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+        if (!response.ok) {
+            fail();
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        success();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
+export async function updateAdminData(username, password, success = () => { }, fail = () => { }) {
+    try {
+        const response = await fetch(`${domain}/professors/updateAdmin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+        if (!response.ok) {
+            fail();
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        success();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
+
+export async function deleteAdminData(username, success = () => { }, fail = () => { }, adminFail = () => { }) {
+    try {
+        if (username === 'admin') {
+            adminFail();
+            return;
+        }
+        const response = await fetch(`${domain}/professors/deleteAdmin`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username })
+        });
+        if (!response.ok) {
+            fail();
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        success();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
+
 // Function to get education data
 export async function getProfessorData() {
     try {
@@ -32,15 +120,6 @@ export async function getProfessorData() {
     }
 }
 
-export async function insertProfessorData(professorData) {
-    const response = await fetch(`${domain}/professors/insertProfessorData`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(professorData)
-    });
-}
 
 export async function getProfessorPublications(professorName) {
     try {
@@ -79,6 +158,16 @@ export async function getProfessorCertifications(professorName) {
         console.error('Error:', error);
         return null;
     }
+}
+
+export async function insertProfessorData(professorData) {
+    const response = await fetch(`${domain}/professors/insertProfessorData`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(professorData)
+    });
 }
 
 export async function updateProfessorData(professorData, originalName) {

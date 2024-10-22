@@ -18,6 +18,47 @@ router.use(bodyParser.json());
 
 //Resume Database Routes
 //Education database connections
+router.post('/professors/getAdmin', async (req, res) => {
+    const { username } = req.body;
+    try {
+        const result = await professorDB.getAdminData(username);
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+router.post('/professors/insertAdmin', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const result = await professorDB.insertAdminData(username, password);
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+router.post('/professors/updateAdmin', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const result = await professorDB.updateAdminData(username, password);
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.delete('/professors/deleteAdmin', async (req, res) => {
+    const { username } = req.body;
+    try {
+        const result = await professorDB.deleteAdminData(username);
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
 
 router.get('/professors/getProfessorData', async (req, res) => {
     try {

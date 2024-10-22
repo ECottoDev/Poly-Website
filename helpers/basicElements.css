@@ -284,7 +284,7 @@
 
 [type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
-  background-image: url("../../assets/icons/Delete.svg");
+  /* background-image: url("../../assets/icons/Delete.svg"); */
   height: 1.5rem;
   width: 1.5rem;
   padding-right: 0rem;
@@ -489,7 +489,7 @@
 
 .getSearchInput__input::-webkit-search-cancel-button {
   -webkit-appearance: none;
-  background-image: url("../../assets/icons/Delete.svg");
+  /* background-image: url("../../assets/icons/Delete.svg"); */
   height: 1.5rem;
   width: 1.5rem;
   padding-right: 0.2rem;
@@ -532,7 +532,7 @@
   opacity: 0;
 }
 
-.hoverButton__main:hover~.hoverButton__alt {
+.hoverButton__main:hover ~ .hoverButton__alt {
   opacity: 1;
   transition-delay: 0.25s;
 }
@@ -594,7 +594,7 @@
   gap: 0.5rem;
 }
 
-.errorPanel__error>* {
+.errorPanel__error > * {
   margin-left: 1rem;
 }
 
@@ -617,27 +617,35 @@
 
 .fadingScrollArea-top {
   mask-image: linear-gradient(180deg, transparent, var(--backdrop_color) 2rem);
-  -webkit-mask-image: linear-gradient(180deg,
-      transparent,
-      var(--backdrop_color) 2rem);
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent,
+    var(--backdrop_color) 2rem
+  );
 }
 
 .fadingScrollArea-bottom {
   mask-image: linear-gradient(0deg, transparent, var(--backdrop_color) 2rem);
-  -webkit-mask-image: linear-gradient(0deg,
-      transparent,
-      var(--backdrop_color) 2rem);
+  -webkit-mask-image: linear-gradient(
+    0deg,
+    transparent,
+    var(--backdrop_color) 2rem
+  );
 }
 
 .fadingScrollArea-double {
-  mask-image: linear-gradient(transparent,
-      var(--backdrop_color) 2rem,
-      var(--backdrop_color) calc(100% - 2rem),
-      transparent);
-  -webkit-mask-image: linear-gradient(transparent,
-      var(--backdrop_color) 2rem,
-      var(--backdrop_color) calc(100% - 2rem),
-      transparent);
+  mask-image: linear-gradient(
+    transparent,
+    var(--backdrop_color) 2rem,
+    var(--backdrop_color) calc(100% - 2rem),
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    transparent,
+    var(--backdrop_color) 2rem,
+    var(--backdrop_color) calc(100% - 2rem),
+    transparent
+  );
 }
 
 /* headingWithHeader */
