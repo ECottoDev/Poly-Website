@@ -209,7 +209,7 @@ router.post('/session/verify', async (req, res) => {
         const result = await loginDB.sessionVerify(username);
         res.json({ success: true });
     } catch (error) {
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.json({ success: false });
     }
 });
 
