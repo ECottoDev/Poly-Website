@@ -6,7 +6,7 @@ import { EditableBookArray } from "./components/editableBookArray/EditableBookAr
 import { NavigationBar } from "./containers/navigationBar/NavigationBar.js";
 import { verifySession } from "./databaseCallers/loginDataCalls.js";
 import { LoginView } from "./views/loginView/LoginView.js";
-import { ProfessorRoster } from "./views/ProfessorRoster/ProfessorRoster.js";
+import { ProfessorRoster } from "./views/professorRoster/ProfessorRoster.js";
 import { ProfessorManagement } from "./views/professorsManagement/ProfessorManagement.js";
 
 
