@@ -11,7 +11,7 @@
   height: calc(100% - 15rem);
   padding: 2rem 2rem 2rem 2rem;
   margin-top: 1rem;
-  background: url("/frontEnd/assets/images/polytechnicUniversity.jpg") no-repeat;
+  background: url("/frontend/assets/images/polytechnicUniversity.jpg") no-repeat;
   background-size: cover;
 }
 

@@ -17,7 +17,7 @@ export class ProfessorTile {
     }
     setView() {
         appendChildren(this.view, [
-            addClasses(createImg(`/frontEnd/${this.professorData.imgLocation}`, "professor image"), 'professorTile_image'),
+            addClasses(createImg(`/frontend/${this.professorData.imgLocation}`, "professor image"), 'professorTile_image'),
             appendChildren(addClasses(createElementContainer(), 'professorTile_info'), [
                 addClasses(createHeadingText(toTitleCase(this.professorData.fullName)), 'professorTile_firstName'),
                 addClasses(createHeadingText(this.professorData.email), 'professorTile_email'),

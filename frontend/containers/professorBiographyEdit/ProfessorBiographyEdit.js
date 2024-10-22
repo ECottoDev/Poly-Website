@@ -69,7 +69,7 @@ export class ProfessorBiographyEdit {
 
     async biographyView() {
         appendChildren(this.container, [
-            addClasses(createImg(`/frontEnd/${this.professorData.imgLocation}`, "professor image"), 'professorBiographyEdit_image'),
+            addClasses(createImg(`/frontend/${this.professorData.imgLocation}`, "professor image"), 'professorBiographyEdit_image'),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_info'), [
                 appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_textContainer'), [
                     addClasses(createHeadingText('Nombre Completo: '), 'professorBiographyEdit_heading'),
