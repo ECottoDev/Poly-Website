@@ -10,7 +10,7 @@
 import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createFileInputBar, createHeadingText, createImg, createInputBar, createParagraph, createPillBox, createScrollArea, createTextArea, detachChildren, getEmptyMessage, getStringDialogBoxView, newLineAtEveryCharacter, toTitleCase } from "../../../helpers/basicElements.js";
 import { Checkbox } from "../../components/checkbox/Checkbox.js";
 import { ArticleTiles } from "../../components/tiles/articlesTiles/ArticleTiles.js";
-import { AwardTiles } from "../../components/tiles/awardTiles/awardTiles.js";
+import { AwardTiles } from "../../components/tiles/awardTiles/AwardTiles.js";
 import { BookTiles } from "../../components/tiles/bookTiles/BookTIles.js";
 import { CertificationTiles } from "../../components/tiles/certificationTiles/CertificationTiles.js";
 import { removeImage, renameImage, uploadImage } from "../../databaseCallers/imageDataCalls.js";
@@ -19,7 +19,7 @@ import { ArticleListEditor } from "../articleListEditor/ArticleListEditor.js";
 import { AwardListEditor } from "../awardListEditor/AwardListEditor.js";
 import { BookListEditor } from "../bookListEditor/BookListEditor.js";
 import { CertificationsListEditor } from "../certificationsListEditor/CertificationsListEditor.js";
-import { NavigationTabs } from "../NavigationTabs/NavigationTabs.js";
+import { NavigationTabs } from "../navigationTabs/NavigationTabs.js";
 
 
 export class ProfessorBiographyEdit {
