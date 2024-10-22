@@ -12,9 +12,9 @@
 
 //education data
 const port = 5507
-// const host = 'https://luxprogramming.com'
+const host = 'https://luxprogramming.com'
 //const host = 'https://44.193.226.223'
-const host = 'http://localhost'
+// const host = 'http://localhost'
 const domain = `${host}:${port}`
 
 // Function to get education data
