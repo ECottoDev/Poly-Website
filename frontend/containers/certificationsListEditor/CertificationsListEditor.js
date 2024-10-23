@@ -4,10 +4,11 @@ import { EditableCertificationsArray } from "../../components/editableCertificat
 import { updateCertificationData } from "../../databaseCallers/professorDataCalls.js";
 
 export class CertificationsListEditor {
-    constructor(parentprops, professorData, certs, close = () => { }) {
+    constructor(parentprops, professorData, certs, apply = () => { }, close = () => { }) {
         this.parentProps = parentprops
         this.professorData = professorData;
         this.certs = new EditableCertificationsArray(this.parentProps, certs);
+        this.apply = apply;
         this.close = close;
         this.view = addClasses(createPillBox(), 'certificationsListEditor_view');
         this.setView();
@@ -19,7 +20,7 @@ export class CertificationsListEditor {
                 this.certs.view,
             ]),
             addEvent(addClasses(createButton('Añadir Certificación'), 'certificationsListEditor_addButton'), () => { this.certs.addInput() }),
-            addEvent(addClasses(createButton('Aplicar'), 'certificationsListEditor_applyButton'), async () => { await updateCertificationData(this.professorData.fullName, this.certs.getUpdatedArray()); this.close() }),
+            addEvent(addClasses(createButton('Aplicar'), 'certificationsListEditor_applyButton'), async () => { await updateCertificationData(this.professorData.fullName, this.certs.getUpdatedArray()); this.apply() }),
             addEvent(addClasses(createButton('Cancelar'), 'certificationsListEditor_closeButton'), () => { this.close() })
         ])
     }
