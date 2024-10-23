@@ -1,4 +1,4 @@
-import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createPillBox } from "../../../helpers/basicElements.js";
+import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createHeadingText, createPillBox } from "../../../helpers/basicElements.js";
 import { EditableArticleArray } from "../../components/editableArticleArray/EditableArticleArray.js";
 import { EditableCertificationsArray } from "../../components/editableCertificationsArray/EditableCertificationsArray.js";
 import { updateCertificationData } from "../../databaseCallers/professorDataCalls.js";
@@ -14,7 +14,7 @@ export class CertificationsListEditor {
     }
     setView() {
         appendChildren(this.view, [
-            addClasses(createButton('Editar Certificaciones'), 'certificationsListEditor_heading'),
+            addClasses(createHeadingText('Editar Certificaciones'), 'certificationsListEditor_heading'),
             appendChildren(addClasses(createElementContainer(), 'certificationsListEditor_certsContainer'), [
                 this.certs.view,
             ]),

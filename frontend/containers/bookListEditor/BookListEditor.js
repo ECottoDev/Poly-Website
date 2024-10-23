@@ -1,4 +1,4 @@
-import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createPillBox } from "../../../helpers/basicElements.js";
+import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createHeadingText, createPillBox } from "../../../helpers/basicElements.js";
 import { EditableBookArray } from "../../components/editableBookArray/EditableBookArray.js";
 import { updateBookData } from "../../databaseCallers/professorDataCalls.js";
 
@@ -13,7 +13,7 @@ export class BookListEditor {
     }
     setView() {
         appendChildren(this.view, [
-            addClasses(createButton('Editar Libros'), 'bookListEditor_heading'),
+            addClasses(createHeadingText('Editar Libros'), 'bookListEditor_heading'),
             appendChildren(addClasses(createElementContainer(), 'bookListEditor_booksContainer'), [
                 this.books.view,
             ]),

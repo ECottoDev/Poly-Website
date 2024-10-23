@@ -1,4 +1,4 @@
-import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createPillBox } from "../../../helpers/basicElements.js";
+import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createHeadingText, createPillBox } from "../../../helpers/basicElements.js";
 import { EditableAwardArray } from "../../components/editableAwardArray/EditableAwardArray.js";
 import { updateAwardData } from "../../databaseCallers/professorDataCalls.js";
 
