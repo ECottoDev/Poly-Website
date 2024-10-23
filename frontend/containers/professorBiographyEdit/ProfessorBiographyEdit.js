@@ -141,6 +141,7 @@ export class ProfessorBiographyEdit {
                     removeImage(this.professorData.fullName);
                     this.close()
 
+
                 }),
             ])
         ])
