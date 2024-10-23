@@ -3,7 +3,7 @@ import { addAttributes, addClasses, addEvent, appendChildren, createButton, crea
 export class EditableAwardArray {
     constructor(parentProps, array) {
         this.parentProps = parentProps
-        this.array = (array[0].name && array[0].year && array[0].institution) ? array : [{ name: '', year: '' }];
+        this.array = (array[0].name && array[0].year && array[0].institution) ? array : [{ name: '', year: '', institution: '' }];
         this.view = addClasses(createScrollArea(), 'editableArray_view');
         this.setView();
     }

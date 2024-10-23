@@ -27,7 +27,7 @@ export async function getAdminData(username) {
             body: JSON.stringify({ username })
         });
         if (!response.ok) {
-           throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
         return data;
@@ -81,7 +81,7 @@ export async function updateAdminData(username, password, success = () => { }, f
 
 export async function deleteAdminData(username, success = () => { }, fail = () => { }, adminFail = () => { }) {
     try {
-        if (username === 'admin'|| username === 'Admin') {
+        if (username === 'admin' || username === 'Admin') {
             adminFail();
             return;
         }
