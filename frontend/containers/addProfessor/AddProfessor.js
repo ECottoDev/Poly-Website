@@ -27,6 +27,7 @@ export class AddProfessor {
                 this.awards = [{ name: '', year: '', institution: '' }];
                 this.insertData();
                 this.upload();
+                this.close();
             })
         ]);
     }
