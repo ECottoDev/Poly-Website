@@ -134,8 +134,8 @@ export class ProfessorBiographyEdit {
                 this.shortBiographyEdit = addClasses(createTextArea(this.professorData.shortBiography), 'professorBiographyEdit_bioContext'),
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
-                addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), () => {
-                    this.applyChanges();
+                addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), async () => {
+                    await this.applyChanges();
                     delayExecution(async () => {
                         detachChildren(this.view);
                         this.setView();
