@@ -156,7 +156,8 @@ export class ProfessorBiographyEdit {
             addEvent(addClasses(createButton('Edit certifications List'), 'professorBiographyEdit_editList'), () => {
                 const close = this.parentProps.displayBox(new CertificationsListEditor(this.parentProps, this.professorData, this.certifications[0].certifications, () => {
                     close();
-                    delayExecution(() => {
+                    delayExecution(async () => {
+                        this.certifications = await getProfessorCertifications(this.professorData.fullName);
                         detachChildren(this.container); this.certificationsView()
                     })
                 }).view)
@@ -171,7 +172,7 @@ export class ProfessorBiographyEdit {
                     return (book.title && book.year && book.publisher) ? new BookTiles(book, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })
             ]),
-            addEvent(addClasses(createButton('Edit Book List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new BookListEditor(this.parentProps, this.professorData, this.publications[0].books, () => { close(); delayExecution(() => { detachChildren(this.container); this.booksView() }, 1000) }).view) }),
+            addEvent(addClasses(createButton('Edit Book List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new BookListEditor(this.parentProps, this.professorData, this.publications[0].books, () => { close(); delayExecution(async () => { this.publications = await getProfessorPublications(this.professorData.fullName); detachChildren(this.container); this.booksView() }, 1000) }).view) }),
         ])
     }
     async articlesView() {
@@ -181,7 +182,7 @@ export class ProfessorBiographyEdit {
                     return (article.title && article.journal && article.year) ? new ArticleTiles(article, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })]),
 
-            addEvent(addClasses(createButton('Edit Article List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new ArticleListEditor(this.parentProps, this.professorData, this.publications[0].articles, () => { close(); delayExecution(() => { detachChildren(this.container); this.articlesView() }, 1000) }).view) }),
+            addEvent(addClasses(createButton('Edit Article List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new ArticleListEditor(this.parentProps, this.professorData, this.publications[0].articles, () => { close(); delayExecution(async () => { this.publications = await getProfessorPublications(this.professorData.fullName); detachChildren(this.container); this.articlesView() }, 1000) }).view) }),
         ])
     }
     async awardsView() {
@@ -190,7 +191,7 @@ export class ProfessorBiographyEdit {
                 this.awards = this.publications[0].awards.map((award, index) => {
                     return (award.name && award.year && award.institution) ? new AwardTiles(award, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })]),
-            addEvent(addClasses(createButton('Edit Awards List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new AwardListEditor(this.parentProps, this.professorData, this.publications[0].awards, () => { close(); delayExecution(() => { detachChildren(this.container); this.awardsView() }, 1000) }).view) }),
+            addEvent(addClasses(createButton('Edit Awards List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new AwardListEditor(this.parentProps, this.professorData, this.publications[0].awards, () => { close(); delayExecution(async () => { this.publications = await getProfessorPublications(this.professorData.fullName); detachChildren(this.container); this.awardsView() }, 1000) }).view) }),
         ])
     }
 
