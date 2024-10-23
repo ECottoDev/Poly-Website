@@ -35,22 +35,18 @@ export class ProfessorBiographyEdit {
             }],
             [() => {
                 detachChildren(this.container);
-                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.certificationsView()
             }],
             [() => {
                 detachChildren(this.container);
-                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.booksView()
             }],
             [() => {
                 detachChildren(this.container);
-                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.articlesView()
             }],
             [() => {
                 detachChildren(this.container);
-                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.awardsView()
             }]
         ]);
@@ -102,7 +98,7 @@ export class ProfessorBiographyEdit {
                 ])
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
-                addEvent(addClasses(createButton('Editar biografía'), 'professorBiographyEdit_editButton'), () => { addClasses(this.view, 'professorBiographyEdit_view--none'); detachChildren(this.container); this.biographyEditView(); delayExecution(() => { removeClasses(this.view, 'professorBiographyEdit_view--none'); addClasses(this.view, 'professorBiographyEdit_view--edit') }, 500); }),
+                addEvent(addClasses(createButton('Editar biografía'), 'professorBiographyEdit_editButton'), () => { addClasses(this.view, 'professorBiographyEdit_view--none'); detachChildren(this.container); this.biographyEditView(); delayExecution(() => { removeClasses(this.view, 'professorBiographyEdit_view--none'); }, 500); }),
                 addEvent(addClasses(createButton('Cerrar'), 'professorBiographyEdit_closeButton'), () => { this.close(); })
             ])
         ])
@@ -141,7 +137,7 @@ export class ProfessorBiographyEdit {
                     this.applyChanges();
                     delayExecution(async () => { this.close() }, 1000)
                 }),
-                addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { addClasses(this.view, 'professorBiographyEdit_view--none'); removeClasses(this.view, 'professorBiographyEdit_view--edit'); delayExecution(() => { detachChildren(this.container); this.biographyView(); removeClasses(this.view, 'professorBiographyEdit_view--none') }, 500) }),
+                addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { addClasses(this.view, 'professorBiographyEdit_view--none'); delayExecution(() => { detachChildren(this.container); this.biographyView(); removeClasses(this.view, 'professorBiographyEdit_view--none') }, 500) }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
                     deleteProfessorData(this.professorData.fullName);
                     removeImage(this.professorData.fullName);
