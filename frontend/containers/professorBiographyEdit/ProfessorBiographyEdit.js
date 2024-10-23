@@ -26,7 +26,6 @@ export class ProfessorBiographyEdit {
     constructor(parentProps, professorData, close = () => { }) {
         this.parentProps = parentProps;
         this.professorData = professorData;
-        console.log(professorData)
         this.noDepartment = new Checkbox('No Aplica', { checked: false });
         this.container = addClasses(createElementContainer(), 'professorBiographyEdit_container')
         this.tabs = new NavigationTabs(['Biography', 'Certifications', 'Books', 'Articles', 'Awards'], [
@@ -85,7 +84,7 @@ export class ProfessorBiographyEdit {
                 ]),
                 appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_textContainer'), [
                     addClasses(createHeadingText('Departamento: '), 'professorBiographyEdit_heading'),
-                    this.departmentEdit = addClasses(createParagraph('Departamento desconocido'), 'professorBiographyEdit_context'),
+                    this.departmentEdit = addClasses(createParagraph(this.professorData.department), 'professorBiographyEdit_context'),
                 ]),
                 appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_textContainer'), [
                     addClasses(createHeadingText('Horas de oficina: '), 'professorBiographyEdit_heading'),

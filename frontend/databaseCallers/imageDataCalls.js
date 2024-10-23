@@ -8,7 +8,6 @@ const domain = `${host}:${port}`
 
 
 export async function renameImage(oldName, newName) {
-    console.log(oldName, newName);
     try {
         const response = await fetch(`${domain}/professors/renameImage`, {
             method: 'POST',
