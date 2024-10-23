@@ -1,7 +1,7 @@
 import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createPillBox } from "../../../helpers/basicElements.js";
 import { EditableArticleArray } from "../../components/editableArticleArray/EditableArticleArray.js";
 import { EditableCertificationsArray } from "../../components/editableCertificationsArray/EditableCertificationsArray.js";
-import { updateArticleData } from "../../databaseCallers/professorDataCalls.js";
+import { updateCertificationData } from "../../databaseCallers/professorDataCalls.js";
 
 export class CertificationsListEditor {
     constructor(parentprops, professorData, certs, close = () => { }) {
