@@ -134,6 +134,12 @@ export function delayedListener(callback = () => { }, ms = 500) {
     };
 }
 
+/**
+ * delays function execution
+ * @param {function} callback The property by which to sort the array
+ * @param {number} delay The property by which to sort the array
+ * 
+ */
 export function delayExecution(callback, delay) {
     setTimeout(callback, delay);
 }

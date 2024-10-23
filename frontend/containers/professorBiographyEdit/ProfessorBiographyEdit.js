@@ -171,7 +171,7 @@ export class ProfessorBiographyEdit {
                     return (book.title && book.year && book.publisher) ? new BookTiles(book, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })
             ]),
-            addEvent(addClasses(createButton('Edit Book List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new BookListEditor(this.parentProps, this.professorData, this.publications[0].books, () => { close(); detachChildren(this.container); this.booksView() }).view) }),
+            addEvent(addClasses(createButton('Edit Book List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new BookListEditor(this.parentProps, this.professorData, this.publications[0].books, () => { close(); delayExecution(() => { detachChildren(this.container); this.booksView() }, 1000) }).view) }),
         ])
     }
     async articlesView() {
@@ -181,7 +181,7 @@ export class ProfessorBiographyEdit {
                     return (article.title && article.journal && article.year) ? new ArticleTiles(article, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })]),
 
-            addEvent(addClasses(createButton('Edit Article List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new ArticleListEditor(this.parentProps, this.professorData, this.publications[0].articles, () => { close(); detachChildren(this.container); this.articlesView() }).view) }),
+            addEvent(addClasses(createButton('Edit Article List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new ArticleListEditor(this.parentProps, this.professorData, this.publications[0].articles, () => { close(); delayExecution(() => { detachChildren(this.container); this.articlesView() }, 1000) }).view) }),
         ])
     }
     async awardsView() {
@@ -190,7 +190,7 @@ export class ProfessorBiographyEdit {
                 this.awards = this.publications[0].awards.map((award, index) => {
                     return (award.name && award.year && award.institution) ? new AwardTiles(award, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })]),
-            addEvent(addClasses(createButton('Edit Awards List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new AwardListEditor(this.parentProps, this.professorData, this.publications[0].awards, () => { close(); detachChildren(this.container); this.awardsView() }).view) }),
+            addEvent(addClasses(createButton('Edit Awards List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new AwardListEditor(this.parentProps, this.professorData, this.publications[0].awards, () => { close(); delayExecution(() => { detachChildren(this.container); this.awardsView() }, 1000) }).view) }),
         ])
     }
 
