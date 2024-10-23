@@ -1,4 +1,8 @@
 .editableArray_object {
-    padding: 0.5rem;
+  padding: 0.5rem;
+}
 
+.editableArray_view {
+  max-height: 25rem;
+  margin: 1rem;
 }

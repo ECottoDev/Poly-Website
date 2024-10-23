@@ -11,3 +11,7 @@
 @import "../containers/professorBiographyEdit/professorBiographyEdit.css";
 @import "../containers/navigationTabs/navigationTabs.css";
 @import "../containers/addProfessor/addProfessor.css";
+@import "../containers/articleListEditor/articleListEditor.css";
+@import "../containers/awardListEditor/awardListEditor.css";
+@import "../containers/bookListEditor/bookListEditor.css";
+@import "../containers/certificationsListEditor/certificationsListEditor.css";

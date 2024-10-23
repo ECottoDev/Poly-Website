@@ -1,3 +1,4 @@
+.certificationsListEditor_view,
 .certificationsListEditor_certsContainer {
-    height: 34rem;
+  max-height: 50rem;
 }

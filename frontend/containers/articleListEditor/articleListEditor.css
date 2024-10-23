@@ -1,3 +1,4 @@
+.articleListEditor_view,
 .articleListEditor_articlesContainer {
-  height: 34rem;
+  max-height: 50rem;
 }

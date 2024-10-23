@@ -1,3 +1,4 @@
-.articleListEditor_awardsContainer {
-    height: 34rem;
+.awardListEditor_view,
+.awardListEditor_articlesContainer {
+  max-height: 50rem;
 }
