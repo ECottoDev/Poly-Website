@@ -23,7 +23,7 @@ import { NavigationTabs } from "../navigationTabs/NavigationTabs.js";
 
 
 export class ProfessorBiographyEdit {
-    constructor(parentProps, professorData, close = () => { }, refresh = () => { }) {
+    constructor(parentProps, professorData, close = () => { }) {
         this.parentProps = parentProps;
         this.professorData = professorData;
         this.noDepartment = new Checkbox('No Aplica', { checked: false });
@@ -51,7 +51,6 @@ export class ProfessorBiographyEdit {
             }]
         ]);
         this.close = close;
-        this.refresh = refresh;
         this.view = addClasses(createPillBox(), 'professorBiographyEdit_view');
         this.setView();
     }
@@ -135,13 +134,13 @@ export class ProfessorBiographyEdit {
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
                 addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), async () => {
-                    await this.applyChanges();
+                    this.applyChanges();
                     delayExecution(async () => {
                         detachChildren(this.view);
                         this.setView();
                         detachChildren(this.container);
                         this.biographyView()
-                    }, 2000)
+                    }, 1000)
                 }),
                 addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.container); this.biographyView() }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
@@ -167,7 +166,7 @@ export class ProfessorBiographyEdit {
                     delayExecution(async () => {
                         this.certifications = await getProfessorCertifications(this.professorData.fullName);
                         detachChildren(this.container); this.certificationsView()
-                    }, 1000)
+                    }, 2000)
                 }).view)
             }),
         ])
@@ -219,7 +218,6 @@ export class ProfessorBiographyEdit {
 
         if (!this.imageEdit.files[0]) {
             await renameImage(`${this.professorData.fullName.toLowerCase().replace(/\s+/g, '_')}.png`, `${fullName.toLowerCase().replace(/\s+/g, '_')}.png`);
-            await this.refresh();
             return;
         }
 
@@ -229,6 +227,6 @@ export class ProfessorBiographyEdit {
         const renamedFile = new File([file], formattedName, { type: file.type });
         uploadImage(renamedFile);
 
-        await this.refresh();
+        this.professorData = await getProfessorData();
     }
 }
