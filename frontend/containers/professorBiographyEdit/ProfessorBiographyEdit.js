@@ -137,7 +137,7 @@ export class ProfessorBiographyEdit {
                     this.applyChanges();
                     delayExecution(async () => { this.close() }, 1000)
                 }),
-                addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.view); removeClasses(this.view, 'professorBiographyEdit_view--edit'); this.setView(); detachChildren(this.container); this.biographyView() }),
+                addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { removeClasses(this.view, 'professorBiographyEdit_view--edit'); detachChildren(this.view); this.setView(); detachChildren(this.container); this.biographyView() }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
                     deleteProfessorData(this.professorData.fullName);
                     removeImage(this.professorData.fullName);
