@@ -31,23 +31,26 @@ export class ProfessorBiographyEdit {
         this.tabs = new NavigationTabs(['Biografía', 'Certificaciones', 'Libros', 'Articulos', 'Premios'], [
             [() => {
                 detachChildren(this.container);
-                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.biographyView()
             }],
             [() => {
                 detachChildren(this.container);
+                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.certificationsView()
             }],
             [() => {
                 detachChildren(this.container);
+                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.booksView()
             }],
             [() => {
                 detachChildren(this.container);
+                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.articlesView()
             }],
             [() => {
                 detachChildren(this.container);
+                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.awardsView()
             }]
         ]);
