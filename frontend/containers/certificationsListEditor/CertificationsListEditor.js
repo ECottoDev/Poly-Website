@@ -14,12 +14,13 @@ export class CertificationsListEditor {
     }
     setView() {
         appendChildren(this.view, [
+            addClasses(createButton('Editar Certificaciones'), 'certificationsListEditor_heading'),
             appendChildren(addClasses(createElementContainer(), 'certificationsListEditor_certsContainer'), [
                 this.certs.view,
             ]),
-            addEvent(addClasses(createButton('Add Certification'), 'certificationsListEditor_addButton'), () => { this.certs.addInput() }),
-            addEvent(addClasses(createButton('Apply'), 'certificationsListEditor_applyButton'), async () => { await updateCertificationData(this.professorData.fullName, this.certs.getUpdatedArray()); this.close() }),
-            addEvent(addClasses(createButton('Cancel'), 'certificationsListEditor_closeButton'), () => { this.close() })
+            addEvent(addClasses(createButton('Añadir Certificación'), 'certificationsListEditor_addButton'), () => { this.certs.addInput() }),
+            addEvent(addClasses(createButton('Aplicar'), 'certificationsListEditor_applyButton'), async () => { await updateCertificationData(this.professorData.fullName, this.certs.getUpdatedArray()); this.close() }),
+            addEvent(addClasses(createButton('Cancelar'), 'certificationsListEditor_closeButton'), () => { this.close() })
         ])
     }
 }

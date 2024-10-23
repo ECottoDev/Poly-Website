@@ -23,7 +23,7 @@ export class ProfessorBiography {
         this.professorData = professorData;
         this.noDepartment = new Checkbox('No Aplica', { checked: false });
         this.container = addClasses(createElementContainer(), 'professorBiography_container')
-        this.tabs = new NavigationTabs(['Biography', 'Certifications', 'Books', 'Articles', 'Awards'], [
+        this.tabs = new NavigationTabs(['Biografía', 'Certificaciones', 'Libros', 'Articulos', 'Premios'], [
             [() => {
                 detachChildren(this.container);
                 this.biographyView()

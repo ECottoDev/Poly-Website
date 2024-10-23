@@ -13,12 +13,13 @@ export class BookListEditor {
     }
     setView() {
         appendChildren(this.view, [
+            addClasses(createButton('Editar Libros'), 'bookListEditor_heading'),
             appendChildren(addClasses(createElementContainer(), 'bookListEditor_booksContainer'), [
                 this.books.view,
             ]),
-            addEvent(addClasses(createButton('Add Book'), 'bookListEditor_addButton'), () => { this.books.addInput() }),
-            addEvent(addClasses(createButton('Apply'), 'bookListEditor_applyButton'), async () => { await updateBookData(this.professorData.fullName, this.books.getUpdatedArray()); this.close() }),
-            addEvent(addClasses(createButton('Cancel'), 'bookListEditor_closeButton'), () => { this.close() })
+            addEvent(addClasses(createButton('Añadir libro'), 'bookListEditor_addButton'), () => { this.books.addInput() }),
+            addEvent(addClasses(createButton('Aplicar'), 'bookListEditor_applyButton'), async () => { await updateBookData(this.professorData.fullName, this.books.getUpdatedArray()); this.close() }),
+            addEvent(addClasses(createButton('Cancelar'), 'bookListEditor_closeButton'), () => { this.close() })
         ])
     }
 }

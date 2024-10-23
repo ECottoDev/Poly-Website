@@ -13,12 +13,13 @@ export class AwardListEditor {
     }
     setView() {
         appendChildren(this.view, [
+            addClasses(createHeadingText('Editar Premios'), 'articleListEditor_heading'),
             appendChildren(addClasses(createElementContainer(), 'articleListEditor_articleContainer'), [
                 this.awards.view,
             ]),
-            addEvent(addClasses(createButton('Add Book'), 'articleListEditor_addButton'), () => { this.awards.addInput() }),
-            addEvent(addClasses(createButton('Apply'), 'articleListEditor_applyButton'), async () => { await updateAwardData(this.professorData.fullName, this.awards.getUpdatedArray()); this.close() }),
-            addEvent(addClasses(createButton('Cancel'), 'articleListEditor_closeButton'), () => { this.close() })
+            addEvent(addClasses(createButton('Añadir premio'), 'articleListEditor_addButton'), () => { this.awards.addInput() }),
+            addEvent(addClasses(createButton('Aplicar'), 'articleListEditor_applyButton'), async () => { await updateAwardData(this.professorData.fullName, this.awards.getUpdatedArray()); this.close() }),
+            addEvent(addClasses(createButton('Cancelar'), 'articleListEditor_closeButton'), () => { this.close() })
         ])
     }
 }

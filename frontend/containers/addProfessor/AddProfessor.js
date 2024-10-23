@@ -11,7 +11,7 @@ export class AddProfessor {
     }
     async setView() {
         appendChildren(this.view, [
-            addClasses(createHeadingText('Add Professor'), 'addProfessor_heading'),
+            addClasses(createHeadingText('Añadir Profesor'), 'addProfessor_heading'),
             this.image = addClasses(createFileInputBar({ type: 'file', accept: 'image/png' }), 'addProfessor_image'),
             this.fullName = addClasses(createInputBar({ placeholder: 'Nombre Completo' }), 'addProfessor_fullName'),
             this.email = addClasses(createInputBar({ placeholder: 'Email' }), 'addProfessor_email'),
