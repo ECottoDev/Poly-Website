@@ -31,6 +31,7 @@ export class ProfessorBiographyEdit {
         this.tabs = new NavigationTabs(['Biografía', 'Certificaciones', 'Libros', 'Articulos', 'Premios'], [
             [() => {
                 detachChildren(this.container);
+                removeClasses(this.view, 'professorBiographyEdit_view--edit');
                 this.biographyView()
             }],
             [() => {
