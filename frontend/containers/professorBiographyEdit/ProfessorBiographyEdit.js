@@ -7,7 +7,7 @@
 * @version 2024-April-29 initial version
 */
 
-import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createFileInputBar, createHeadingText, createImg, createInputBar, createParagraph, createPillBox, createScrollArea, createTextArea, detachChildren, getEmptyMessage, getStringDialogBoxView, newLineAtEveryCharacter, toTitleCase } from "../../../helpers/basicElements.js";
+import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createFileInputBar, createHeadingText, createImg, createInputBar, createParagraph, createPillBox, createScrollArea, createTextArea, delayExecution, detachChildren, getEmptyMessage, getStringDialogBoxView, newLineAtEveryCharacter, toTitleCase } from "../../../helpers/basicElements.js";
 import { Checkbox } from "../../components/checkbox/Checkbox.js";
 import { ArticleTiles } from "../../components/tiles/articlesTiles/ArticleTiles.js";
 import { AwardTiles } from "../../components/tiles/awardTiles/AwardTiles.js";
@@ -153,7 +153,14 @@ export class ProfessorBiographyEdit {
                     return (cert.title && cert.institute) ? new CertificationTiles(cert, index).view : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorBiography__emptyContainerMessage');
                 })
             ]),
-            addEvent(addClasses(createButton('Edit certifications List'), 'professorBiographyEdit_editList'), () => { const close = this.parentProps.displayBox(new CertificationsListEditor(this.parentProps, this.professorData, this.certifications[0].certifications, () => { close(); detachChildren(this.container); this.certificationsView() }).view) }),
+            addEvent(addClasses(createButton('Edit certifications List'), 'professorBiographyEdit_editList'), () => {
+                const close = this.parentProps.displayBox(new CertificationsListEditor(this.parentProps, this.professorData, this.certifications[0].certifications, () => {
+                    close();
+                    delayExecution(() => {
+                        detachChildren(this.container); this.certificationsView()
+                    })
+                }).view)
+            }),
         ])
     }
     async booksView() {
