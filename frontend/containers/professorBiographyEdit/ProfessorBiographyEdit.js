@@ -121,7 +121,7 @@ export class ProfessorBiographyEdit {
                 ]),
                 appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_textContainer'), [
                     addClasses(createHeadingText('Departamento: '), 'professorBiographyEdit_heading'),
-                    this.departmentEdit = addClasses(createInputBar({ value: 'Departamento desconocido' }), 'professorBiographyEdit_context'),
+                    this.departmentEdit = addClasses(createInputBar({ value: this.professorData.department }), 'professorBiographyEdit_context'),
                 ]),
                 appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_textContainer'), [
                     addClasses(createHeadingText('Horas de oficina: '), 'professorBiographyEdit_heading'),

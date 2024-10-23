@@ -81,7 +81,7 @@ export class ProfessorBiography {
                 ]),
                 appendChildren(addClasses(createElementContainer(), 'professorBiography_textContainer'), [
                     addClasses(createHeadingText('Departamento: '), 'professorBiography_heading'),
-                    this.departmentEdit = addClasses(createParagraph('Departamento desconocido'), 'professorBiography_context'),
+                    this.departmentEdit = addClasses(createParagraph(this.professorData.department), 'professorBiography_context'),
                 ]),
                 appendChildren(addClasses(createElementContainer(), 'professorBiography_textContainer'), [
                     addClasses(createHeadingText('Horas de oficina: '), 'professorBiography_heading'),
