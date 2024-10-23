@@ -136,13 +136,13 @@ export class ProfessorBiographyEdit {
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
                 addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), () => {
                     this.applyChanges(); delayExecution(() => {
-
                         detachChildren(this.view);
                         this.refresh();
-                        this.setView();
-                        detachChildren(this.container);
-                        this.biographyView();
-
+                        delayExecution(() => {
+                            this.setView();
+                            detachChildren(this.container);
+                            this.biographyView(), 1000
+                        })
                     }, 2000)
                 }),
                 addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.container); this.biographyView() }),
