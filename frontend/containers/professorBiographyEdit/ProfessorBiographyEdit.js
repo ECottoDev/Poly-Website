@@ -139,7 +139,7 @@ export class ProfessorBiographyEdit {
 
                         detachChildren(this.view);
                         this.refresh();
-                        this.view();
+                        this.setView();
 
                     }, 2000)
                 }),
