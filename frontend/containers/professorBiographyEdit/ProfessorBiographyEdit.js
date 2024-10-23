@@ -140,8 +140,8 @@ export class ProfessorBiographyEdit {
                         detachChildren(this.view);
                         this.setView();
                         detachChildren(this.container);
-                        this.biographyView(), 2000
-                    })
+                        this.biographyView()
+                    }, 1000)
                 }),
                 addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.container); this.biographyView() }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
