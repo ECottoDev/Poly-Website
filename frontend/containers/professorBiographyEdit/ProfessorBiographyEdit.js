@@ -98,7 +98,7 @@ export class ProfessorBiographyEdit {
                 ])
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
-                addEvent(addClasses(createButton('Editar biografía'), 'professorBiographyEdit_editButton'), () => { detachChildren(this.container); addClasses(this.view, 'professorBiographyEdit_view--edit'); this.biographyEditView(); }),
+                addEvent(addClasses(createButton('Editar biografía'), 'professorBiographyEdit_editButton'), () => { detachChildren(this.container); addClasses(this.view, 'professorBiographyEdit_view--edit'); delayExecution(() => { this.biographyEditView(); }, 500) }),
                 addEvent(addClasses(createButton('Cerrar'), 'professorBiographyEdit_closeButton'), () => { this.close(); })
             ])
         ])
