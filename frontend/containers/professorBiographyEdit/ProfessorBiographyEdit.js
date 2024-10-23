@@ -210,7 +210,8 @@ export class ProfessorBiographyEdit {
         await updateProfessorData(this.professorEditData, this.professorData.fullName);
 
         if (!this.imageEdit.files[0]) {
-            console.log(await renameImage(`${this.professorData.fullName.toLowerCase().replace(/\s+/g, '_')}.png`, `${fullName.toLowerCase().replace(/\s+/g, '_')}.png`));
+            await renameImage(`${this.professorData.fullName.toLowerCase().replace(/\s+/g, '_')}.png`, `${fullName.toLowerCase().replace(/\s+/g, '_')}.png`);
+            return;
         }
 
 
