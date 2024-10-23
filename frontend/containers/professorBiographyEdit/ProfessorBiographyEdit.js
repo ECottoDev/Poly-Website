@@ -167,7 +167,7 @@ export class ProfessorBiographyEdit {
                     delayExecution(async () => {
                         this.certifications = await getProfessorCertifications(this.professorData.fullName);
                         detachChildren(this.container); this.certificationsView()
-                    })
+                    }, 1000)
                 }).view)
             }),
         ])
