@@ -137,9 +137,9 @@ export class ProfessorBiographyEdit {
                 addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), () => {
                     this.applyChanges(); delayExecution(() => {
 
-                        detachChildren(this.container);
+                        detachChildren(this.view);
                         this.refresh();
-                        this.biographyView();
+                        this.view();
 
                     }, 2000)
                 }),
