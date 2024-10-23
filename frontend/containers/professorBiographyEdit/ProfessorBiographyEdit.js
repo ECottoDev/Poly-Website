@@ -23,7 +23,7 @@ import { NavigationTabs } from "../navigationTabs/NavigationTabs.js";
 
 
 export class ProfessorBiographyEdit {
-    constructor(parentProps, professorData, close = () => { }) {
+    constructor(parentProps, professorData, close = () => { }, refresh = () => { }) {
         this.parentProps = parentProps;
         this.professorData = professorData;
         this.noDepartment = new Checkbox('No Aplica', { checked: false });
@@ -51,6 +51,7 @@ export class ProfessorBiographyEdit {
             }]
         ]);
         this.close = close;
+        this.refresh = refresh;
         this.view = addClasses(createPillBox(), 'professorBiographyEdit_view');
         this.setView();
     }
@@ -133,7 +134,15 @@ export class ProfessorBiographyEdit {
                 this.shortBiographyEdit = addClasses(createTextArea(this.professorData.shortBiography), 'professorBiographyEdit_bioContext'),
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
-                addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), () => { this.applyChanges(); detachChildren(this.container); this.biographyView() }),
+                addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), () => {
+                    this.applyChanges(); delayExecution(() => {
+
+                        detachChildren(this.container);
+                        this.refresh();
+                        this.biographyView();
+
+                    }, 2000)
+                }),
                 addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.container); this.biographyView() }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
                     deleteProfessorData(this.professorData.fullName);
