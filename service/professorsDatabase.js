@@ -243,15 +243,30 @@ class ProfessorsDatabase {
                     console.log('Connected!');
                 });
             }
-            const query = "UPDATE professors SET fullName = ?, email = ?, position = ?, department = ?, officeHours = ?, imgLocation = ?, shortBiography = ? WHERE fullName = ?";
+            const query1 = "UPDATE professors SET fullName = ?, email = ?, position = ?, department = ?, officeHours = ?, imgLocation = ?, shortBiography = ? WHERE fullName = ?";
+            const query2 = "UPDATE certifications SET professorName = ? WHERE professorName = ?";
+            const query3 = "UPDATE publications SET professorName = ? WHERE professorName = ?";
 
-            const response = await new Promise((resolve, reject) => {
-                this.connection.query(query, [professor.fullName, professor.email, professor.position, professor.department, professor.officeHours, professor.imgLocation, professor.shortBio, originalName], (err, results) => {
+            const table1 = await new Promise((resolve, reject) => {
+                this.connection.query(query1, [professor.fullName, professor.email, professor.position, professor.department, professor.officeHours, professor.imgLocation, professor.shortBio, originalName], (err, results) => {
                     if (err) reject(new Error(err.message));
                     resolve(results);
                 });
             });
-            return response.affectedRows === 1 ? true : false;
+            const table2 = await new Promise((resolve, reject) => {
+                this.connection.query(query2, [professor.fullName, originalName], (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                });
+            });
+            const table3 = await new Promise((resolve, reject) => {
+                this.connection.query(query3, [professor.fullName, originalName], (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                });
+            });
+            const [result1, result2, result3] = await Promise.all([table1, table2, table3]);
+            return result1.affectedRows === 1 && (result2.affectedRows === 1 && result3.affectedRows === 1) ? true : false;
 
         } catch (err) {
             console.log(err);
