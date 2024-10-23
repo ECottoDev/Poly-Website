@@ -99,7 +99,7 @@ export class ProfessorBiographyEdit {
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
                 addEvent(addClasses(createButton('Editar biografía'), 'professorBiographyEdit_editButton'), () => { detachChildren(this.container); this.biographyEditView(); addClasses(this.view, 'professorBiographyEdit_view--edit') }),
-                addEvent(addClasses(createButton('Cerrar'), 'professorBiographyEdit_closeButton'), () => { removeClasses(this.view, 'professorBiographyEdit_view--edit'); delayExecution(() => { this.close(); }, 2000) })
+                addEvent(addClasses(createButton('Cerrar'), 'professorBiographyEdit_closeButton'), () => { this.close(); })
             ])
         ])
     }
@@ -137,7 +137,7 @@ export class ProfessorBiographyEdit {
                     this.applyChanges();
                     delayExecution(async () => { this.close() }, 1000)
                 }),
-                addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.view); this.setView(); detachChildren(this.container); this.biographyView() }),
+                addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.view); removeClasses(this.view, 'professorBiographyEdit_view--edit'); this.setView(); detachChildren(this.container); this.biographyView() }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
                     deleteProfessorData(this.professorData.fullName);
                     removeImage(this.professorData.fullName);
