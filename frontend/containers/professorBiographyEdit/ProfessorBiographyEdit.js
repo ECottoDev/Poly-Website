@@ -7,7 +7,7 @@
 * @version 2024-April-29 initial version
 */
 
-import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createFileInputBar, createHeadingText, createImg, createInputBar, createParagraph, createPillBox, createScrollArea, createTextArea, delayExecution, detachChildren, getEmptyMessage, getStringDialogBoxView, newLineAtEveryCharacter, toTitleCase } from "../../../helpers/basicElements.js";
+import { addClasses, addEvent, appendChildren, createButton, createElementContainer, createFileInputBar, createHeadingText, createImg, createInputBar, createParagraph, createPillBox, createScrollArea, createTextArea, delayExecution, detachChildren, getEmptyMessage, getStringDialogBoxView, newLineAtEveryCharacter, removeClasses, toTitleCase } from "../../../helpers/basicElements.js";
 import { Checkbox } from "../../components/checkbox/Checkbox.js";
 import { ArticleTiles } from "../../components/tiles/articlesTiles/ArticleTiles.js";
 import { AwardTiles } from "../../components/tiles/awardTiles/AwardTiles.js";
@@ -99,7 +99,7 @@ export class ProfessorBiographyEdit {
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
                 addEvent(addClasses(createButton('Editar biografía'), 'professorBiographyEdit_editButton'), () => { detachChildren(this.container); this.biographyEditView(); addClasses(this.view, 'professorBiographyEdit_view--edit') }),
-                addEvent(addClasses(createButton('Cerrar'), 'professorBiographyEdit_closeButton'), () => { this.close(); })
+                addEvent(addClasses(createButton('Cerrar'), 'professorBiographyEdit_closeButton'), () => { removeClasses(this.view, 'professorBiographyEdit_view--edit'); this.close(); })
             ])
         ])
     }
