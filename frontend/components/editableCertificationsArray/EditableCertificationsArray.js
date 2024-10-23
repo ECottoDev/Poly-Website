@@ -20,7 +20,7 @@ export class EditableCertificationsArray {
                     ]);
                 });
                 appendChildren(container, [
-                    addEvent(addClasses(createButton('Delete Certification'), 'editableArray_removeButton'), () => { this.removeObjectAtIndex(index) }) // Add button
+                    addEvent(addClasses(createButton('Eliminar Certificacion'), 'editableArray_removeButton'), () => { this.removeObjectAtIndex(index) }) // Add button
                 ]);
                 return container;
             }),

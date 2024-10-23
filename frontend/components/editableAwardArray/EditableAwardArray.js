@@ -20,7 +20,7 @@ export class EditableAwardArray {
                     ]);
                 });
                 appendChildren(container, [
-                    addEvent(addClasses(createButton('Delete Award'), 'editableArray_removeButton'), () => { this.removeObjectAtIndex(index) }) // Add button
+                    addEvent(addClasses(createButton('Eliminar Premio'), 'editableArray_removeButton'), () => { this.removeObjectAtIndex(index) }) // Add button
                 ]);
                 return container;
             }),
