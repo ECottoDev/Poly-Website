@@ -219,7 +219,7 @@ export class ProfessorBiographyEdit {
 
         if (!this.imageEdit.files[0]) {
             await renameImage(`${this.professorData.fullName.toLowerCase().replace(/\s+/g, '_')}.png`, `${fullName.toLowerCase().replace(/\s+/g, '_')}.png`);
-            this.refresh();
+            await this.refresh();
             return;
         }
 
@@ -229,6 +229,6 @@ export class ProfessorBiographyEdit {
         const renamedFile = new File([file], formattedName, { type: file.type });
         uploadImage(renamedFile);
 
-        this.refresh();
+        await this.refresh();
     }
 }
