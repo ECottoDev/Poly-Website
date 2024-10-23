@@ -135,15 +135,13 @@ export class ProfessorBiographyEdit {
             ]),
             appendChildren(addClasses(createElementContainer(), 'professorBiographyEdit_buttons'), [
                 addEvent(addClasses(createButton('Aplicar Cambios'), 'professorBiographyEdit_applyEdit'), () => {
-                    this.applyChanges(); delayExecution(async () => {
+                    this.applyChanges();
+                    delayExecution(async () => {
                         detachChildren(this.view);
-                        await this.refresh();
-                        delayExecution(() => {
-                            this.setView();
-                            detachChildren(this.container);
-                            this.biographyView(), 1000
-                        })
-                    }, 1000)
+                        this.setView();
+                        detachChildren(this.container);
+                        this.biographyView(), 1000
+                    })
                 }),
                 addEvent(addClasses(createButton('Cancelar'), 'professorBiographyEdit_cancelEdit'), () => { detachChildren(this.container); this.biographyView() }),
                 addEvent(addClasses(createButton('Eliminar Profesor'), 'professorBiographyEdit_closeButton'), () => {
@@ -229,5 +227,7 @@ export class ProfessorBiographyEdit {
         const formattedName = imageLocation
         const renamedFile = new File([file], formattedName, { type: file.type });
         uploadImage(renamedFile);
+
+        this.refresh();
     }
 }
