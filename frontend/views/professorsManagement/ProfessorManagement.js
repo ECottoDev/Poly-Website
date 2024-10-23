@@ -60,7 +60,7 @@ export class ProfessorManagement {
         appendChildren(detachChildren(this.scrollArea),
             this.handleSearch().length ? this.handleSearch().map((entry) => {
                 return addEvent(addClasses(new ProfessorEditTile(this.parentProps, entry).view, 'professorManagement_professorTile'), () => {
-                    const closeDisplay = this.parentProps.displayBox(new ProfessorBiographyEdit(this.parentProps, entry, () => { closeDisplay() }).view)
+                    const closeDisplay = this.parentProps.displayBox(new ProfessorBiographyEdit(this.parentProps, entry, () => { closeDisplay(); detachChildren(this.view); this.fetch() }).view)
                 })
             }) : addClasses(getEmptyMessage('No se encontró ningúna entrada.'), 'professorManagement__emptyContainerMessage'));
     }
