@@ -65,8 +65,14 @@ export class EditableCertificationsArray {
         if (index >= 0 && index < this.array.length) {
             this.array.splice(index, 1); // Remove the object at the specified index
             this.setView(); // Re-render the view
-        } else {
+        }
+        if (index == 0) {
+            this.array = [{ title: '', institute: '' }];
+            this.setView();
+        }
+        else {
             console.log('Invalid index');
         }
     }
+
 }

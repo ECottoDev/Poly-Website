@@ -66,6 +66,9 @@ export class EditableArticleArray {
         if (index >= 0 && index < this.array.length) {
             this.array.splice(index, 1); // Remove the object at the specified index
             this.setView(); // Re-render the view
+        } if (index == 0) {
+            this.array = [{ year: '', title: '', journal: '' }];
+            this.setView();
         } else {
             console.log('Invalid index');
         }
