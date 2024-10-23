@@ -39,8 +39,8 @@ export class ProfessorManagement {
             appendChildren(addClasses(createElementContainer(), "professorManagement_scrollAreaHeader"), [
                 addClasses(createHeadingText('Facultad: Departamento de Ciencias de Computadoras e ingieneria'), "professorManagement_title"),
                 appendChildren(addClasses(createElementContainer(), 'professorManagement_buttonAndSearch'), [
-                    addEvent(addClasses(createButton('Administración'), "professorManagement_adminButton"), () => { const close = this.parentProps.displayBox(new AdminMangement(this.parentProps, () => (close())).view) }),
-                    addEvent(addClasses(createButton('Añadir Profesor'), "professorManagement_addProfessorButton"), () => { const close = this.parentProps.displayBox(new AddProfessor(this.parentProps, () => (close())).view) }),
+                    addEvent(addClasses(createButton('Administración'), "professorManagement_adminButton"), () => { const close = this.parentProps.displayBox(new AdminMangement(this.parentProps, () => { close() }).view) }),
+                    addEvent(addClasses(createButton('Añadir Profesor'), "professorManagement_addProfessorButton"), () => { const close = this.parentProps.displayBox(new AddProfessor(this.parentProps, () => { close(); detachChildren(this.view); this.fetch() }).view) }),
                     addEvent(addClasses(createButton('Salir'), "professorManagement_exitButton"), () => { this.logout(); verifySession(this.parentProps.username()) }),
                     addClasses(this.searchBar.view, "professorManagement_searchBar"),
                 ]),
