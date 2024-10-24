@@ -33,6 +33,11 @@ export class AdminMangement {
             this.temp2 = addClasses(createInputBar({ type: 'password', placeholder: 'Confirmar Contraseña' }), 'adminManagement_inputBar'),
             appendChildren(addClasses(createElementContainer(), 'adminManagement_buttons'), [
                 addEvent(addClasses(createButton('Guardar'), 'adminManagement_saveButton'), async () => {
+                    if (this.user.value === 'admin' || this.user.value === 'Admin') {
+                        const close = this.parentProps.displayBox(addClasses(getStringDialogBoxView('Error. No se puede crear usuario admin.'), 'adminManagement_errorDialogBox'));
+                        delayExecution(() => close(), 2000);
+                        return;
+                    }
                     if (this.temp1.value !== this.temp2.value) {
                         const close = this.parentProps.displayBox(addClasses(getStringDialogBoxView('Las contraseñas no coinciden.'), 'adminManagement_errorDialogBox'));
                         delayExecution(() => close(), 2000);
