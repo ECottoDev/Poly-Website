@@ -27,7 +27,7 @@ export class AddProfessor {
                 this.awards = [{ name: '', year: '', institution: '' }];
                 this.insertData();
                 this.upload();
-                this.close();
+
             })
         ]);
     }
@@ -39,6 +39,7 @@ export class AddProfessor {
         const formattedName = `${this.fullName.value.toLowerCase().replace(/\s+/g, '_')}.png`;
         const renamedFile = new File([file], formattedName, { type: file.type });
         uploadImage(renamedFile);
+        this.close();
     }
     async insertData() {
         const file = this.image.files[0];
