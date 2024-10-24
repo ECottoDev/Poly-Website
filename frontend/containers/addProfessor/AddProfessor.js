@@ -42,6 +42,11 @@ export class AddProfessor {
         uploadImage(renamedFile);
     }
     async insertData() {
+        const file = this.image.files[0];
+        if (!file || !this.fullName.value) {
+            alert("Favor de llenar su nombre y subir una imagen.");
+            return;
+        }
         const professorData = {
             fullName: this.fullName.value,
             email: this.email.value,
