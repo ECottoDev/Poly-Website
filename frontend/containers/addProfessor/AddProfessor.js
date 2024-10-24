@@ -34,7 +34,6 @@ export class AddProfessor {
     upload() {
         const file = this.image.files[0];
         if (!file || !this.fullName.value) {
-            alert("Favor de llenar su nombre y subir una imagen.");
             return;
         }
         const formattedName = `${this.fullName.value.toLowerCase().replace(/\s+/g, '_')}.png`;
